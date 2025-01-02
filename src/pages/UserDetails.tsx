@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
+import { BiArrowBack } from "react-icons/bi";
 import { User } from "../types";
 
 const UserDetails = () => {
@@ -51,6 +52,10 @@ const UserDetails = () => {
           <strong>Phone:</strong> {user.phone}
         </p>
         <p>
+          <strong>Address:</strong> {user.address.suite}, {user.address.street},{" "}
+          {user.address.city}
+        </p>
+        <p>
           <strong>Website:</strong>{" "}
           <a
             href={`https://${user.website}`}
@@ -64,9 +69,13 @@ const UserDetails = () => {
         <p>
           <strong>Company:</strong> {user.company.name}
         </p>
-        <div className="mt-4">
-          <Link to="/" className="text-blue-500 hover:underline">
-            Back to User List
+        <div className="mt-4 flex">
+          <Link
+            to="/"
+            className="flex items-center gap-1 rounded-md text-white bg-blue-500 px-3 py-1 text-lg "
+          >
+            <BiArrowBack size={24} />
+            Back
           </Link>
         </div>
       </div>

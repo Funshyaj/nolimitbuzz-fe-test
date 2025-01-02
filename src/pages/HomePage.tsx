@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { User } from "../types";
+import { BiCircle } from "react-icons/bi";
 
 const HomePage = () => {
   const [users, setUsers] = useState<User[]>([]);
@@ -25,7 +26,11 @@ const HomePage = () => {
   }, []);
 
   if (loading) {
-    return <div className="text-center mt-20 text-lg">Loading users...</div>;
+    return (
+      <div className="text-center mt-20 text-lg">
+        <BiCircle className="animate-spin" size={32} />
+      </div>
+    );
   }
 
   return (
@@ -38,12 +43,16 @@ const HomePage = () => {
             className="p-4 bg-white rounded-lg shadow-md flex flex-col justify-between"
           >
             <h2 className="text-lg font-semibold">{user.name}</h2>
-            <Link
-              to={`/user/${user.id}`}
-              className="mt-4 text-blue-500 hover:underline"
-            >
-              View Details
-            </Link>
+            <p className="text-">{user.username}</p>
+            <p className="text-">{user.email}</p>
+            <div className="mt-4 flex">
+              <Link
+                to={`/user/${user.id}`}
+                className="flex items-center gap-1 rounded-md text-white bg-blue-500 px-3 py-1 text-lg "
+              >
+                View More
+              </Link>
+            </div>
           </div>
         ))}
       </div>
