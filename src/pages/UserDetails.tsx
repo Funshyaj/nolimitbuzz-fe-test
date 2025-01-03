@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { BiArrowBack } from "react-icons/bi";
 import { User } from "../types";
+import { ImSpinner9 } from "react-icons/im";
 
 const UserDetails = () => {
   const { id } = useParams<{ id: string }>();
@@ -28,7 +29,10 @@ const UserDetails = () => {
 
   if (loading) {
     return (
-      <div className="text-center mt-20 text-lg">Loading user details...</div>
+      <div className="container mx-auto p-4 h-screen w-full flex flex-col gap-2 items-center justify-center">
+        <ImSpinner9 className="animate-spin text-blue-500" size={60} />
+        <p>Loading user details...</p>
+      </div>
     );
   }
 
